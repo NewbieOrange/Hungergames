@@ -51,9 +51,18 @@ public class Util
 
     public static void msg(CommandSender sender, String s)
     {
-        sender.sendMessage(ChatColor.DARK_RED + "[" + ChatColor.DARK_AQUA + "HungerGames"
-                + ChatColor.DARK_RED + "] " + ChatColor.AQUA
-                + ChatColor.translateAlternateColorCodes('&', s));
+        if (sender instanceof Player)
+        {
+            sender.sendMessage(ChatColor.DARK_RED + "[" + ChatColor.DARK_AQUA
+                    + "HungerGames" + ChatColor.DARK_RED + "] " + ChatColor.AQUA
+                    + ChatColor.translateAlternateColorCodes('&', s));
+        }
+        else
+        {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "[" + ChatColor.DARK_AQUA
+                    + "HungerGames" + ChatColor.DARK_RED + "] " + ChatColor.AQUA
+                    + ChatColor.translateAlternateColorCodes('&', s));
+        }
     }
 
     public static void scm(CommandSender sender, String s)
