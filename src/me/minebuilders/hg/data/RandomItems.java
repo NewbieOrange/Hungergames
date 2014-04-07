@@ -82,6 +82,7 @@ public class RandomItems
         {
             String[] amount = s.split(" ");
             for (String p : amount)
+            {
                 if (p.startsWith("x:"))
                 {
                     int c = Integer.parseInt(p.replace("x:", ""));
@@ -93,8 +94,11 @@ public class RandomItems
                     }
                 }
                 else
+                {
                     plugin.items
                             .put(plugin.items.size() + 1, plugin.ism.getItem(s, true));
+                }
+            }
         }
         Util.log(plugin.items.size() + " Random items have been loaded!");
     }
