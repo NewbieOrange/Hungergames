@@ -34,7 +34,7 @@ public abstract class BaseCmd
             }
             else
             {
-                Util.log("You can not use this command in console.");
+                Util.log("You cannot use this command in console.");
                 return false;
             }
         }
