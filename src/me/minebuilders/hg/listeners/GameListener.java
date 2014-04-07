@@ -365,7 +365,7 @@ public class GameListener implements Listener
                         {
                             Util.msg(p, ChatColor.RED + "Click the sign with your hand!");
                         }
-                        
+
                     }
                     else
                     {

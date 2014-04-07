@@ -12,77 +12,97 @@ import me.minebuilders.hg.Game;
 import me.minebuilders.hg.HG;
 import me.minebuilders.hg.PlayerData;
 
-public class CompassTask implements Runnable {
+public class CompassTask implements Runnable
+{
 
-	private HG plugin;
+    private HG plugin;
 
-	public CompassTask(HG plugin) {
-		this.plugin = plugin;
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.plugin, this, 25L, 25L);
-	}
+    public CompassTask(HG plugin)
+    {
+        this.plugin = plugin;
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.plugin, this, 25L, 25L);
+    }
 
-	@Override
-	public void run() {
-		for (Player p : Bukkit.getOnlinePlayers()) {
+    @Override
+    public void run()
+    {
+        for (Player p : Bukkit.getOnlinePlayers())
+        {
 
-			if (p.getInventory().contains(Material.COMPASS)) {
-				PlayerData pd = plugin.players.get(p.getName());
+            if (p.getInventory().contains(Material.COMPASS))
+            {
+                PlayerData pd = plugin.players.get(p.getName());
 
-				if (pd != null) {
+                if (pd != null)
+                {
 
-					String[] st = getNearestPlayer(p, pd);
-					String info = ChatColor.WHITE + "" + ChatColor.BOLD + "Nearest Player: " + ChatColor.RED + st[0] + "    "  + ChatColor.WHITE + "" + ChatColor.BOLD + "Distance: " + ChatColor.RED + st[1]; 
+                    String[] st = getNearestPlayer(p, pd);
+                    String info = ChatColor.WHITE + "" + ChatColor.BOLD
+                            + "Nearest Player: " + ChatColor.RED + st[0] + "    "
+                            + ChatColor.WHITE + "" + ChatColor.BOLD + "Distance: "
+                            + ChatColor.RED + st[1];
 
-					for (ItemStack it : p.getInventory()) {
-						if (it != null && it.getType() == Material.COMPASS) {
-							ItemMeta im = it.getItemMeta();
-							im.setDisplayName(info);
-							it.setItemMeta(im);
-						}
-					}
-				}
+                    for (ItemStack it : p.getInventory())
+                    {
+                        if (it != null && it.getType() == Material.COMPASS)
+                        {
+                            ItemMeta im = it.getItemMeta();
+                            im.setDisplayName(info);
+                            it.setItemMeta(im);
+                        }
+                    }
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 
-	private int cal(int i) {
-		if (i < 0) {
-			return -i;
-		}
-		return i;
-	}
+    private int cal(int i)
+    {
+        if (i < 0)
+        {
+            return -i;
+        }
+        return i;
+    }
 
-    public String[] getNearestPlayer(Player p, PlayerData pd) {
+    public String[] getNearestPlayer(Player p, PlayerData pd)
+    {
 
-		Game g = pd.getGame();
+        Game g = pd.getGame();
 
-		int x = p.getLocation().getBlockX();
-		int y = p.getLocation().getBlockY();
-		int z = p.getLocation().getBlockZ();
+        int x = p.getLocation().getBlockX();
+        int y = p.getLocation().getBlockY();
+        int z = p.getLocation().getBlockZ();
 
-		int i = 200000;
+        int i = 200000;
 
-		Player player = null;
+        Player player = null;
 
-		for (String s : g.getPlayers()) {
+        for (String s : g.getPlayers())
+        {
 
-			Player p2 = Bukkit.getPlayer(s);
+            Player p2 = Bukkit.getPlayer(s);
 
-			if (p2 != null && !p2.equals(p) && !pd.isOnTeam(s)) {
+            if (p2 != null && !p2.equals(p) && !pd.isOnTeam(s))
+            {
 
-				Location l = p2.getLocation();
+                Location l = p2.getLocation();
 
-				int c = (int) (cal((int) (x - l.getX())) + cal((int) (y - l.getY())) + cal((int) (z - l.getZ())));
+                int c = (int) (cal((int) (x - l.getX())) + cal((int) (y - l.getY())) + cal((int) (z - l
+                        .getZ())));
 
-				if (i > c) {
-					player = p2;
-					i = c;
-				}
-			}
-		}
-		if (player != null) p.setCompassTarget(player.getLocation());
+                if (i > c)
+                {
+                    player = p2;
+                    i = c;
+                }
+            }
+        }
+        if (player != null)
+            p.setCompassTarget(player.getLocation());
 
-		return new String[] {(player==null?"none":player.getName()), String.valueOf(i)};
-	}
+        return new String[] { (player == null ? "none" : player.getName()),
+                String.valueOf(i) };
+    }
 }
