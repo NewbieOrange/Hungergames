@@ -18,7 +18,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.material.Attachable;
 import org.bukkit.material.MaterialData;
-//import org.bukkit.util.Vector;
 
 import me.minebuilders.hg.Config;
 
@@ -157,20 +156,21 @@ public class Util
         return false;
     }
 
-    @SuppressWarnings("deprecation")
-    public static Block getTargetBlock(Player player, int range)
+    public static BlockFace getSignFace(int face)
     {
-        /*
-         * Location loc = player.getEyeLocation(); Vector dir =
-         * loc.getDirection().normalize();
-         * 
-         * Block b = null;
-         * 
-         * for (int i = 0; i <= range; i++) { b = loc.add(dir).getBlock(); }
-         * 
-         * return b;
-         */
-
-        return player.getTargetBlock(null, range);
+        switch (face)
+        {
+            case 2:
+                return BlockFace.WEST;
+            case 4:
+                return BlockFace.SOUTH;
+            case 3:
+                return BlockFace.EAST;
+            case 5:
+                return BlockFace.NORTH;
+            default:
+                return BlockFace.WEST;
+        }
     }
+
 }

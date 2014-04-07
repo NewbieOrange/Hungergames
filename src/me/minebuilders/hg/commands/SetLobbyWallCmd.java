@@ -27,7 +27,8 @@ public class SetLobbyWallCmd extends BaseCmd
         Game g = HG.manager.getGame(args[1]);
         if (g != null)
         {
-            Block b = Util.getTargetBlock(player, 6);
+            @SuppressWarnings("deprecation")
+            Block b = player.getTargetBlock(null, 6);
             if (b.getType() == Material.WALL_SIGN && g.setLobbyBlock((Sign) b.getState()))
             {
                 Location l = b.getLocation();

@@ -22,7 +22,8 @@ public class SetLeaveSignCmd extends BaseCmd
     @Override
     public boolean run()
     {
-        Block b = Util.getTargetBlock(player, 6);
+        @SuppressWarnings("deprecation")
+        Block b = player.getTargetBlock(null, 6);
         if (b.getType() == Material.WALL_SIGN || b.getType() == Material.SIGN_POST)
         {
             Sign sign = (Sign) b.getState();
@@ -30,6 +31,10 @@ public class SetLeaveSignCmd extends BaseCmd
             sign.setLine(1, ChatColor.DARK_RED + "Leave Game");
 
             Util.msg(player, "&aThe leaveSign has been set!");
+        }
+        else
+        {
+            Util.msg(player, "&cYou're not looking at a sign!");
         }
         return true;
     }

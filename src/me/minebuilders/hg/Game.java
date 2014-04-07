@@ -386,13 +386,14 @@ public class Game
         p.setWalkSpeed(0.2F);
     }
 
+    @SuppressWarnings("deprecation")
     public boolean setLobbyBlock(Sign sign)
     {
         try
         {
             this.s = sign;
             Block c = s.getBlock();
-            BlockFace face = c.getFace(c);
+            BlockFace face = Util.getSignFace(c.getData());
             this.s1 = (Sign) c.getRelative(face).getState();
             this.s2 = (Sign) s1.getBlock().getRelative(face).getState();
 
