@@ -1,0 +1,125 @@
+#For 1.7.x and higher compatibility, please use item material name instead of id.
+#For item material names:
+#http://jd.bukkit.org/rb/apidocs/src-html/org/bukkit/Material.html
+
+settings:
+    spawn-mobs: true
+    spawn-mobs-interval: 35
+    free-roam: 25
+    trackingstick-uses: 8
+    players-for-trackingstick: 5
+    max-chestcontent: 5
+    random-durability: false
+    teleport-at-end: true
+    max-team-size: 3
+reward:
+    enabled: true
+    cash: 500
+random-chest:
+    enabled: false
+    interval: 30
+    max-chestcontent: 9
+rollback:
+    allow-block-break: false
+    editable-blocks:
+        - GRASS
+        - DIRT
+        - COBBLESTONE
+        - WOOD
+        - SANDSTONE
+        - WOOL
+        - DOUBLE_STEP
+        - SMOOTH_BRICK
+        - THIN_GLASS
+        - WOOD_DOUBLE_STEP
+kits:
+    bowman:
+        permission: none
+        helmet: LEATHER_HELMET color:red
+        chestplate: LEATHER_CHESTPLATE color:red
+        leggings: LEATHER_LEGGINGS color:red
+        boots: LEATHER_BOOTS color:red
+        items:
+            - BOW 1 name:&2Lucky_Bow
+            - ARROW 64
+            - POTION:8229 2
+        potion-effects:
+    survivor:
+        permission: none
+        helmet: LEAVES
+        chestplate: LEATHER_CHESTPLATE color:green
+        leggings: LEATHER_LEGGINGS color.green
+        boots: AIR
+        items:
+            - STONE_SWORD 1
+            - BREAD 4
+            - POTION:8229 2
+        potion-effects:
+    pro:
+        permission: none
+        helmet: AIR
+        chestplate: AIR
+        leggings: AIR
+        boots: AIR
+        items:
+            - IRON_SWORD 1
+            - BREAD 4
+            - POTION:8229 2
+        potion-effects:
+    ninja:
+        permission: none
+        helmet: AIR
+        chestplate: LEATHER_CHESTPLATE color:black name:&7Ninja-ChestPlate lore:&6Ninja-Stealth-Suit:&4------------- enchant:PROTECTION_FIRE
+        leggings: LEATHER_LEGGINGS color:black
+        boots: LEATHER_BOOTS color:black enchant:PROTECTION_FALL
+        items:
+            - POTION:8229 2 name:&bSuper-healing
+        potion-effects:
+            - SPEED.1.forever
+    stupidclass:
+        permission: hg.vip
+        helmet: AIR
+        chestplate: AIR
+        leggings: AIR
+        boots: AIR
+        items:
+            - IRON_SWORD 1 enchant:SHARPNESS:2 enchant:DAMAGE_UNDEAD:2 name:&6OP_sword?
+            - BREAD 4
+            - POTION:8229 2
+        potion-effects:
+            - FIRE_RESISTANCE.2.forever
+languages:
+    game_not_ready: "This arena is not ready! Please wait before joining!"
+    game_is_full: " is currently full!"
+    joined_the_game: "&b Has joined the game"
+    left_the_game: "&l&c Has left the game"
+    players_to_start: " players to start!"
+    welcome_to_hg: "&9&l>----------[&b&lWelcome to HungerGames&9&l]----------<"
+    pick_kits_tip: "&9&l - &bPick a kit using &c/hg kit <kit-name>"
+    kits: "&9&lKits:&b"
+    last_line: "&9&l>--------------------------------------------<"
+    
+    you_won: "&aYou won "
+    for_win_hg: " for winning HungerGames!"
+    won_at_arena: " &l&bWon HungerGames at arena "
+    winner_list_and: ", and "
+    
+    Chest_drop_at: "&b| &3A Care-Package was just dropped near: &f"
+
+    Sign_click_to_join: "Click To Join"
+    Sign_game_status: "Game Status"
+    Sign_alive: "Alive"
+    
+    Status_running: "Running"
+    Status_stopped: "Stopped"
+    Status_waiting: "Waiting..."
+    Status_broken: "BROKEN"
+    Status_rollback: "Restoring..."
+    Status_not_ready: "NotReady"
+    Status_beginning: "Running"
+    Status_count_down: "Starting..."
+    
+    SBDisplay_title: "HungerGames"
+    SBDisplay_players_alive: "Players-Alive:"
+    
+    dont_have_permission: "You do not have permission to use"
