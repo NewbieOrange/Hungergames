@@ -364,7 +364,8 @@ public class GameListener implements Listener
                     {
                         if (p.getItemInHand().getType() == Material.AIR)
                         {
-                            game.leave(p);
+                            HG.plugin.players.get(p.getName()).getGame().leave(p);
+                            Util.msg(p, "&cYou left Hungergames!");
                         }
                         else
                         {
