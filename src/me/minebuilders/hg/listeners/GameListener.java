@@ -354,13 +354,7 @@ public class GameListener implements Listener
                         ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "HungerGames")
                         && sign.getLine(1).equals(ChatColor.DARK_RED + "Leave Game"))
                 {
-                    Game game = HG.manager.getGame(p.getLocation());
-                    if (game == null)
-                    {
-                        Util.msg(p, ChatColor.RED + "You're not in a vaild arena!");
-                        return;
-                    }
-                    else
+                    if (HG.plugin.players.containsKey(p.getName()))
                     {
                         if (p.getItemInHand().getType() == Material.AIR)
                         {
@@ -371,6 +365,12 @@ public class GameListener implements Listener
                         {
                             Util.msg(p, ChatColor.RED + "Click the sign with your hand!");
                         }
+                        
+                    }
+                    else
+                    {
+                        Util.msg(p, ChatColor.RED + "You're not in a vaild game!");
+                        return;
                     }
                 }
             }
