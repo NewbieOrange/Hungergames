@@ -519,7 +519,8 @@ public class GameListener implements Listener
             Location to = event.getTo();
             if ((from.getX() != to.getX()) || (from.getZ() != to.getZ()))
             {
-                event.setCancelled(true);
+                event.setTo(new Location(from.getWorld(), from.getX(), to.getY(), from
+                        .getZ(), to.getYaw(), to.getPitch()));
             }
         }
     }
