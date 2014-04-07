@@ -26,24 +26,22 @@ public abstract class BaseCmd
         sender = s;
         args = arg;
 
-        if (forcePlayer)
+        if (s instanceof Player)
         {
-            if (s instanceof Player)
-            {
-                player = (Player) s;
-            }
-            else
-            {
-                Util.log("You cannot use this command in console.");
-                return false;
-            }
+            player = (Player) s;
         }
+        else if (forcePlayer)
+        {
+            Util.log("You cannot use this command in console.");
+            return false;
+        }
+
         if (!s.hasPermission("hg." + cmdName))
             sender.sendMessage(ChatColor.RED + Config.l_dont_have_permission + ": "
                     + ChatColor.GOLD + "/hg " + cmdName);
         else if (forceInGame && !HG.plugin.players.containsKey(player.getName()))
             sender.sendMessage(ChatColor.RED + "Your not in a valid game!");
-        else if (forceInRegion && !HG.manager.isInRegion(player.getLocation()))
+        else if (forceInRegion && !HG.manager.isInRegion(( player.getLocation())))
             sender.sendMessage(ChatColor.RED + "Your not in a valid HungerGames region!");
         else if (argLength > arg.length)
             Util.scm(s, "&4Wrong usage: " + sendHelpLine());
