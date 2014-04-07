@@ -60,7 +60,7 @@ public class ChestDrop implements Listener
             {
                 b.setType(Material.AIR);
             }
-            else
+            else if (b.getType() != Material.AIR)
             {
                 Util.warning("[HungerGames] Warning! Block at "
                         + beforeBlock.getWorld() + ": " + beforeBlock.getX() + ", "
