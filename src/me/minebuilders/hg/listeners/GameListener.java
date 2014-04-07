@@ -499,7 +499,7 @@ public class GameListener implements Listener
             plugin.players.get(player.getName()).getGame().leave(player);
         }
     }
-    
+
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event)
     {
