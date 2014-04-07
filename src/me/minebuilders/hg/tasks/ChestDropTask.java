@@ -42,7 +42,7 @@ public class ChestDropTask implements Runnable
         int z = i[2];
         World w = g.getRegion().getWorld();
 
-        while (w.getBlockAt(new Location(w, x, y, z)).getType() == Material.AIR)
+        while (w.getBlockAt(x, y, z).getType() == Material.AIR)
         {
             y--;
 
