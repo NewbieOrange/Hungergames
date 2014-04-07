@@ -505,7 +505,8 @@ public class GameListener implements Listener
     {
         Player player = event.getPlayer();
         Game game = plugin.players.get(player.getName()).getGame();
-        if (game != null && game.getStatus() == Status.COUNTDOWN)
+        if (game != null
+                && (game.getStatus() == Status.COUNTDOWN || game.getStatus() == Status.WAITING))
         {
             event.setCancelled(true);
         }
