@@ -16,6 +16,7 @@ import me.minebuilders.hg.commands.ListCmd;
 import me.minebuilders.hg.commands.ListGamesCmd;
 import me.minebuilders.hg.commands.ReloadCmd;
 import me.minebuilders.hg.commands.SetExitCmd;
+import me.minebuilders.hg.commands.SetLeaveSignCmd;
 import me.minebuilders.hg.commands.SetLobbyWallCmd;
 import me.minebuilders.hg.commands.StartCmd;
 import me.minebuilders.hg.commands.StopCmd;
@@ -106,6 +107,7 @@ public class HG extends JavaPlugin
         cmds.put("leave", new LeaveCmd());
         cmds.put("reload", new ReloadCmd());
         cmds.put("setlobbywall", new SetLobbyWallCmd());
+        cmds.put("setleavesign", new SetLeaveSignCmd());
         cmds.put("wand", new WandCmd());
         cmds.put("kit", new KitCmd());
         cmds.put("debug", new DebugCmd());

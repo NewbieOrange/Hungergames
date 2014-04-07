@@ -31,7 +31,7 @@ public class SetLeaveSignCmd extends BaseCmd
 
             Util.msg(player, "&aThe leaveSign has been set!");
         }
-        return false;
+        return true;
     }
 
 }
