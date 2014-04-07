@@ -59,9 +59,10 @@ public class Util
         }
         else
         {
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "[" + ChatColor.DARK_AQUA
-                    + "HungerGames" + ChatColor.DARK_RED + "] " + ChatColor.AQUA
-                    + ChatColor.translateAlternateColorCodes('&', s));
+            Bukkit.getConsoleSender().sendMessage(
+                    ChatColor.DARK_RED + "[" + ChatColor.DARK_AQUA + "HungerGames"
+                            + ChatColor.DARK_RED + "] " + ChatColor.AQUA
+                            + ChatColor.translateAlternateColorCodes('&', s));
         }
     }
 
