@@ -340,6 +340,51 @@ public class GameListener implements Listener
     }
 
     @EventHandler
+    public void onPlayerClickLeave(PlayerInteractEvent event)
+    {
+        Player p = event.getPlayer();
+        if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK))
+        {
+            Block b = event.getClickedBlock();
+            if (b.getType().equals(Material.WALL_SIGN)
+                    || b.getType().equals(Material.SIGN_POST))
+            {
+                Sign sign = (Sign) b.getState();
+                if (sign.getLine(0).equals(
+                        ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "HungerGames")
+                        && sign.getLine(1).equals(ChatColor.DARK_RED + "Leave Game"))
+                {
+                    Game game = HG.manager.getGame(p.getLocation());
+                    if (game == null)
+                    {
+                        Util.msg(p, ChatColor.RED + "You're not in a vaild arena!");
+                        return;
+                    }
+                    else
+                    {
+                        if (p.getItemInHand().getType() == Material.AIR)
+                        {
+                            game.leave(p);
+                        }
+                        else
+                        {
+                            Util.msg(p, ChatColor.RED + "Click the sign with your hand!");
+                        }
+                    }
+                }
+            }
+        }
+        else if (event.getAction().equals(Action.LEFT_CLICK_AIR))
+        {
+            if (p.getItemInHand().getType().equals(Material.STICK)
+                    && plugin.players.containsKey(p.getName()))
+            {
+                useTrackStick(p);
+            }
+        }
+    }
+
+    @EventHandler
     public void blockPlace(BlockPlaceEvent event)
     {
         Player p = event.getPlayer();
