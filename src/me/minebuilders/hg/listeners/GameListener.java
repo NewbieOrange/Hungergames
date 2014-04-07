@@ -504,7 +504,15 @@ public class GameListener implements Listener
     public void onPlayerMove(PlayerMoveEvent event)
     {
         Player player = event.getPlayer();
-        Game game = plugin.players.get(player.getName()).getGame();
+        Game game = null;
+        try
+        {
+            game = plugin.players.get(player.getName()).getGame();
+        }
+        catch (Exception e)
+        {
+            return;
+        }
         if (game != null
                 && (game.getStatus() == Status.COUNTDOWN || game.getStatus() == Status.WAITING))
         {
