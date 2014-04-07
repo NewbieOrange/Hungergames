@@ -28,6 +28,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -496,6 +497,17 @@ public class GameListener implements Listener
         if (plugin.players.containsKey(player.getName()))
         {
             plugin.players.get(player.getName()).getGame().leave(player);
+        }
+    }
+    
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event)
+    {
+        Player player = event.getPlayer();
+        Game game = plugin.players.get(player.getName()).getGame();
+        if (game != null && game.getStatus() == Status.COUNTDOWN)
+        {
+            event.setCancelled(true);
         }
     }
 }
