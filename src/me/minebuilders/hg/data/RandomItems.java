@@ -78,8 +78,10 @@ public class RandomItems
             reloadCustomConfig();
             Util.log("generating defaults for random items!");
         }
+        int size = 0;
         for (String s : item.getStringList("items"))
         {
+            size++;
             String[] amount = s.split(" ");
             for (String p : amount)
             {
@@ -100,7 +102,7 @@ public class RandomItems
                 }
             }
         }
-        Util.log(plugin.items.size() + " Random items have been loaded!");
+        Util.log(size + " Random items have been loaded!");
     }
 
     public void setDefaultss()
