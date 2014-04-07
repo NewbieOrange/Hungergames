@@ -29,6 +29,7 @@ public class SetLeaveSignCmd extends BaseCmd
             Sign sign = (Sign) b.getState();
             sign.setLine(0, ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "HungerGames");
             sign.setLine(1, ChatColor.DARK_RED + "Leave Game");
+            sign.update(true);
 
             Util.msg(player, "&aThe leaveSign has been set!");
         }
