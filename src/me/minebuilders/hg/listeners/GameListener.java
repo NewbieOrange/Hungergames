@@ -517,11 +517,33 @@ public class GameListener implements Listener
         {
             Location from = event.getFrom();
             Location to = event.getTo();
-            if ((from.getX() != to.getX()) || (from.getZ() != to.getZ()))
+            if (from.getX() != to.getX() || from.getZ() != to.getZ())
             {
                 event.setTo(new Location(from.getWorld(), from.getX(), to.getY(), from
                         .getZ(), to.getYaw(), to.getPitch()));
             }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerAttack(EntityDamageByEntityEvent event)
+    {
+        try
+        {
+            Entity damager = event.getDamager();
+            if (damager instanceof Player)
+            {
+                Status status = plugin.players.get(((Player) damager).getName())
+                        .getGame().getStatus();
+                if (status == Status.COUNTDOWN || status == Status.WAITING)
+                {
+                    event.setCancelled(true);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            return;
         }
     }
 }
