@@ -513,8 +513,7 @@ public class GameListener implements Listener
         {
             return;
         }
-        if (game != null
-                && (game.getStatus() == Status.COUNTDOWN || game.getStatus() == Status.WAITING))
+        if (game.getStatus() == Status.COUNTDOWN || game.getStatus() == Status.WAITING)
         {
             event.setCancelled(true);
         }
