@@ -512,7 +512,9 @@ public class GameListener implements Listener
             {
                 Location from = event.getFrom();
                 Location to = event.getTo();
-                if (from.getX() != to.getX() || from.getZ() != to.getZ())
+
+                if (Math.abs(from.getX() - to.getX()) > 0.001
+                        || Math.abs(from.getZ() - to.getZ()) > 0.001)
                 {
                     event.setTo(new Location(from.getWorld(), from.getX(), to.getY(),
                             from.getZ(), to.getYaw(), to.getPitch()));
