@@ -504,45 +504,36 @@ public class GameListener implements Listener
     public void onPlayerMove(PlayerMoveEvent event)
     {
         Player player = event.getPlayer();
-        try
+        if (plugin.players.containsKey(player.getName()))
         {
             Game game = plugin.players.get(player.getName()).getGame();
-            if (game.getStatus() == Status.COUNTDOWN || game.getStatus() == Status.WAITING)
+            if (game.getStatus() == Status.COUNTDOWN
+                    || game.getStatus() == Status.WAITING)
             {
                 Location from = event.getFrom();
                 Location to = event.getTo();
                 if (from.getX() != to.getX() || from.getZ() != to.getZ())
                 {
-                    event.setTo(new Location(from.getWorld(), from.getX(), to.getY(), from
-                            .getZ(), to.getYaw(), to.getPitch()));
+                    event.setTo(new Location(from.getWorld(), from.getX(), to.getY(),
+                            from.getZ(), to.getYaw(), to.getPitch()));
                 }
             }
-        }
-        catch (Exception e)
-        {
-            return;
         }
     }
 
     @EventHandler
     public void onPlayerAttack(EntityDamageByEntityEvent event)
     {
-        try
+        Entity damager = event.getDamager();
+        if (damager instanceof Player
+                && plugin.players.containsKey(((Player) damager).getName()))
         {
-            Entity damager = event.getDamager();
-            if (damager instanceof Player)
+            Status status = plugin.players.get(((Player) damager).getName()).getGame()
+                    .getStatus();
+            if (status == Status.COUNTDOWN || status == Status.WAITING)
             {
-                Status status = plugin.players.get(((Player) damager).getName())
-                        .getGame().getStatus();
-                if (status == Status.COUNTDOWN || status == Status.WAITING)
-                {
-                    event.setCancelled(true);
-                }
+                event.setCancelled(true);
             }
-        }
-        catch (Exception e)
-        {
-            return;
         }
     }
 }
