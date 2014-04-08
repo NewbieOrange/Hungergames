@@ -504,24 +504,23 @@ public class GameListener implements Listener
     public void onPlayerMove(PlayerMoveEvent event)
     {
         Player player = event.getPlayer();
-        Game game = null;
         try
         {
-            game = plugin.players.get(player.getName()).getGame();
+            Game game = plugin.players.get(player.getName()).getGame();
+            if (game.getStatus() == Status.COUNTDOWN || game.getStatus() == Status.WAITING)
+            {
+                Location from = event.getFrom();
+                Location to = event.getTo();
+                if (from.getX() != to.getX() || from.getZ() != to.getZ())
+                {
+                    event.setTo(new Location(from.getWorld(), from.getX(), to.getY(), from
+                            .getZ(), to.getYaw(), to.getPitch()));
+                }
+            }
         }
         catch (Exception e)
         {
             return;
-        }
-        if (game.getStatus() == Status.COUNTDOWN || game.getStatus() == Status.WAITING)
-        {
-            Location from = event.getFrom();
-            Location to = event.getTo();
-            if (from.getX() != to.getX() || from.getZ() != to.getZ())
-            {
-                event.setTo(new Location(from.getWorld(), from.getX(), to.getY(), from
-                        .getZ(), to.getYaw(), to.getPitch()));
-            }
         }
     }
 
