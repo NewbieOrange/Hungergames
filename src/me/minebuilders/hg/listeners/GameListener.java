@@ -503,10 +503,10 @@ public class GameListener implements Listener
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event)
     {
-        Player player = event.getPlayer();
-        if (plugin.players.containsKey(player.getName()))
+        PlayerData pd = plugin.players.get(event.getPlayer().getName());
+        if (pd != null)
         {
-            Game game = plugin.players.get(player.getName()).getGame();
+            Game game = plugin.players.get(event.getPlayer().getName()).getGame();
             if (game.getStatus() == Status.COUNTDOWN
                     || game.getStatus() == Status.WAITING)
             {
@@ -527,14 +527,17 @@ public class GameListener implements Listener
     public void onPlayerAttack(EntityDamageByEntityEvent event)
     {
         Entity damager = event.getDamager();
-        if (damager instanceof Player
-                && plugin.players.containsKey(((Player) damager).getName()))
+        if (damager instanceof Player)
         {
-            Status status = plugin.players.get(((Player) damager).getName()).getGame()
-                    .getStatus();
-            if (status == Status.COUNTDOWN || status == Status.WAITING)
+            PlayerData pd = plugin.players.get((Player) damager);
+            if (pd != null)
             {
-                event.setCancelled(true);
+                Status status = plugin.players.get(((Player) damager).getName())
+                        .getGame().getStatus();
+                if (status == Status.COUNTDOWN || status == Status.WAITING)
+                {
+                    event.setCancelled(true);
+                }
             }
         }
     }
