@@ -529,7 +529,7 @@ public class GameListener implements Listener
         Entity damager = event.getDamager();
         if (damager instanceof Player)
         {
-            PlayerData pd = plugin.players.get((Player) damager);
+            PlayerData pd = plugin.players.get(((Player) damager).getName());
             if (pd != null)
             {
                 Status status = plugin.players.get(((Player) damager).getName())
