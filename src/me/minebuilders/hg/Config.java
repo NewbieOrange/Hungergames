@@ -42,6 +42,10 @@ public class Config
     // Misc items
     public static ItemStack firework;
 
+    // Events Setting
+    public static boolean checkPlayerMoveEvent;
+    public static boolean preventAttackingBeforeStarted;
+
     // Languages Start
     public static String l_game_not_ready;
     public static String l_joined_the_game;
@@ -113,6 +117,10 @@ public class Config
         randomChest = config.getBoolean("random-chest.enabled");
         randomChestInterval = config.getInt("random-chest.interval") * 20;
         randomChestMaxContent = config.getInt("random-chest.max-chestcontent");
+
+        checkPlayerMoveEvent = config.getBoolean("events.check-player-move-event");
+        preventAttackingBeforeStarted = config
+                .getBoolean("events.prevent-attacking-before-started");
 
         l_game_not_ready = config.getString("languages.game_not_ready");
         l_joined_the_game = config.getString("languages.joined_the_game");

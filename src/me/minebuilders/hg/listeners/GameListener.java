@@ -503,21 +503,24 @@ public class GameListener implements Listener
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event)
     {
-        PlayerData pd = plugin.players.get(event.getPlayer().getName());
-        if (pd != null)
+        if (Config.checkPlayerMoveEvent)
         {
-            Game game = plugin.players.get(event.getPlayer().getName()).getGame();
-            if (game.getStatus() == Status.COUNTDOWN
-                    || game.getStatus() == Status.WAITING)
+            PlayerData pd = plugin.players.get(event.getPlayer().getName());
+            if (pd != null)
             {
-                Location from = event.getFrom();
-                Location to = event.getTo();
-
-                if (Math.abs(from.getX() - to.getX()) > 0.001
-                        || Math.abs(from.getZ() - to.getZ()) > 0.001)
+                Game game = plugin.players.get(event.getPlayer().getName()).getGame();
+                if (game.getStatus() == Status.COUNTDOWN
+                        || game.getStatus() == Status.WAITING)
                 {
-                    event.setTo(new Location(from.getWorld(), from.getX(), to.getY(),
-                            from.getZ(), to.getYaw(), to.getPitch()));
+                    Location from = event.getFrom();
+                    Location to = event.getTo();
+
+                    if (Math.abs(from.getX() - to.getX()) > 0.001
+                            || Math.abs(from.getZ() - to.getZ()) > 0.001)
+                    {
+                        event.setTo(new Location(from.getWorld(), from.getX(), to.getY(),
+                                from.getZ(), to.getYaw(), to.getPitch()));
+                    }
                 }
             }
         }
@@ -526,17 +529,20 @@ public class GameListener implements Listener
     @EventHandler
     public void onPlayerAttack(EntityDamageByEntityEvent event)
     {
-        Entity damager = event.getDamager();
-        if (damager instanceof Player)
+        if (Config.preventAttackingBeforeStarted)
         {
-            PlayerData pd = plugin.players.get(((Player) damager).getName());
-            if (pd != null)
+            Entity damager = event.getDamager();
+            if (damager instanceof Player)
             {
-                Status status = plugin.players.get(((Player) damager).getName())
-                        .getGame().getStatus();
-                if (status == Status.COUNTDOWN || status == Status.WAITING)
+                PlayerData pd = plugin.players.get(((Player) damager).getName());
+                if (pd != null)
                 {
-                    event.setCancelled(true);
+                    Status status = plugin.players.get(((Player) damager).getName())
+                            .getGame().getStatus();
+                    if (status == Status.COUNTDOWN || status == Status.WAITING)
+                    {
+                        event.setCancelled(true);
+                    }
                 }
             }
         }

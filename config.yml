@@ -32,6 +32,9 @@ rollback:
         - SMOOTH_BRICK
         - THIN_GLASS
         - WOOD_DOUBLE_STEP
+events:
+    check-player-move-event: false
+    prevent-attacking-before-started: false
 kits:
     bowman:
         permission: none
