@@ -10,6 +10,7 @@ import me.minebuilders.hg.commands.CreateCmd;
 import me.minebuilders.hg.commands.DebugCmd;
 import me.minebuilders.hg.commands.DeleteCmd;
 import me.minebuilders.hg.commands.JoinCmd;
+import me.minebuilders.hg.commands.KickCmd;
 import me.minebuilders.hg.commands.KitCmd;
 import me.minebuilders.hg.commands.LeaveCmd;
 import me.minebuilders.hg.commands.ListCmd;
@@ -104,6 +105,7 @@ public class HG extends JavaPlugin
         cmds.put("addspawn", new AddSpawnCmd());
         cmds.put("create", new CreateCmd());
         cmds.put("join", new JoinCmd());
+        cmds.put("kick", new KickCmd());
         cmds.put("leave", new LeaveCmd());
         cmds.put("reload", new ReloadCmd());
         cmds.put("setlobbywall", new SetLobbyWallCmd());

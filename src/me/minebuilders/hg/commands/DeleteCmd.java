@@ -60,7 +60,7 @@ public class DeleteCmd extends BaseCmd
         }
         else
         {
-            sender.sendMessage("This arena does not exist!");
+            Util.msg(sender, "This arena does not exist!");
         }
         return true;
     }
