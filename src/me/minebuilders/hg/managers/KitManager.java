@@ -37,4 +37,17 @@ public class KitManager
         }
         return kits.substring(1);
     }
+
+    public String getKitListUsable(Player p)
+    {
+        String kits = "";
+        for (String s : kititems.keySet())
+        {
+            if (kititems.get(s).hasKitPermission(p))
+            {
+                kits = kits + ", " + s;
+            }
+        }
+        return kits.substring(1);
+    }
 }

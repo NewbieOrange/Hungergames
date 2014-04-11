@@ -23,6 +23,7 @@ public class Config
     public static int playersfortrackingstick;
     public static int maxchestcontent;
     public static boolean randomItemDurability;
+    public static boolean listUnusableKits;
     public static boolean teleAtEnd;
     public static int maxTeam;
 
@@ -105,6 +106,7 @@ public class Config
         playersfortrackingstick = config.getInt("settings.players-for-trackingstick");
         maxchestcontent = config.getInt("settings.max-chestcontent");
         randomItemDurability = config.getBoolean("settings.random-durability");
+        listUnusableKits = config.getBoolean("settings.list-unusable-kits");
         teleAtEnd = config.getBoolean("settings.teleport-at-end");
         maxTeam = config.getInt("settings.max-team-size");
         giveReward = config.getBoolean("reward.enabled");

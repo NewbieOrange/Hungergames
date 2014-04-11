@@ -252,7 +252,15 @@ public class Game
 
     public void kitHelp(Player p)
     {
-        String kit = HG.plugin.kit.getKitList();
+        String kit;
+        if (Config.listUnusableKits)
+        {
+            kit = HG.plugin.kit.getKitList();
+        }
+        else
+        {
+            kit = HG.plugin.kit.getKitListUsable(p);
+        }
         Util.scm(p, "&8     ");
         Util.scm(p, Config.l_welcome_to_hg);
         Util.scm(p, Config.l_pick_kits_tip);

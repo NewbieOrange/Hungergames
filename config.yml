@@ -10,6 +10,7 @@ settings:
     players-for-trackingstick: 5
     max-chestcontent: 5
     random-durability: false
+    list-unusable-kits: true
     teleport-at-end: true
     max-team-size: 3
 reward:
