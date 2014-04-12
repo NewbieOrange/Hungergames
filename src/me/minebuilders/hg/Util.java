@@ -3,6 +3,8 @@ package me.minebuilders.hg;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -70,15 +72,16 @@ public class Util
 
     public static boolean isInt(String str)
     {
-        try
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(str);
+        if (isNum.matches())
         {
-            Integer.parseInt(str);
+            return true;
         }
-        catch (NumberFormatException e)
+        else
         {
             return false;
         }
-        return true;
     }
 
     @SuppressWarnings("deprecation")
