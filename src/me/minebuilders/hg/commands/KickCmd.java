@@ -32,8 +32,8 @@ public class KickCmd extends BaseCmd
 
                 Util.msg(player,
                         ChatColor.RED + "You have been kicked by " + sender.getName());
-                Util.msg(sender, ChatColor.RED + "The player " + args[1]
-                        + ChatColor.DARK_AQUA + " has been kicked from arena "
+                Util.msg(sender, ChatColor.DARK_AQUA + "The player " + ChatColor.RED
+                        + args[1] + ChatColor.DARK_AQUA + " has been kicked from arena "
                         + ChatColor.AQUA + game.getName());
             }
             else
