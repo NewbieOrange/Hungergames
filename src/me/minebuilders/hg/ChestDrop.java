@@ -62,11 +62,11 @@ public class ChestDrop implements Listener
             }
             else if (b.getType() != Material.AIR)
             {
-                Util.warning("[HungerGames] Warning! Block at " + beforeBlock.getWorld()
+                Util.warning("Warning! Block at " + beforeBlock.getWorld()
                         + ": " + beforeBlock.getX() + ", " + beforeBlock.getY() + ", "
                         + beforeBlock.getZ() + " is " + b.getType()
                         + ", instead of PISTOL_BASE, ignoring it");
-                Util.warning("[HungerGames] This message can be ingored safely");
+                Util.warning("This message can be ingored safely");
             }
         }
 
