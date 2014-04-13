@@ -78,6 +78,7 @@ public class HG extends JavaPlugin
         getServer().getPluginManager().registerEvents(new CancelListener(this), this);
         getServer().getPluginManager().registerEvents(new GameListener(this), this);
         loadCmds();
+        getServer().getPluginManager().addPermission(new Permission("hg.nodrop"));
         Util.log("Hugergames has been enabled!");
     }
 
@@ -96,6 +97,8 @@ public class HG extends JavaPlugin
         for (String bc : cmds.keySet())
             getServer().getPluginManager().removePermission(new Permission("hg." + bc));
 
+        getServer().getPluginManager().removePermission(new Permission("hg.nodrop"));
+        
         Util.log("Hugergames has been disabled!");
     }
 

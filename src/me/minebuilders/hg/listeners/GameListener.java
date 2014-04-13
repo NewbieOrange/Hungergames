@@ -118,7 +118,11 @@ public class GameListener implements Listener
 
             event.getDrops().clear();
 
-            dropInv(p);
+            if (!p.hasPermission("hg.nodrop"))
+            {
+                dropInv(p);
+            }
+            
             g.exit(p);
 
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable()
