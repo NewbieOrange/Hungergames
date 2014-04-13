@@ -118,10 +118,7 @@ public class GameListener implements Listener
 
             event.getDrops().clear();
 
-            if (!p.hasPermission("hg.nodrop"))
-            {
-                dropInv(p);
-            }
+            dropInv(p);
             
             g.exit(p);
 
